@@ -1,8 +1,11 @@
 package com.sample.orders.orderservice.controller;
 
 import com.sample.orders.orderservice.dto.PaymentRequest;
+import com.sample.orders.orderservice.dto.PaymentResponse;
 import com.sample.orders.orderservice.entity.Orders;
 import com.sample.orders.orderservice.service.OrderService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,9 +17,10 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    @PutMapping
-    public ResponseEntiry<PaymentRequest> createOrder(@RequestBody Orders orderRecieved)
-    {
-        orderRecieved.get
+
+    @PostMapping
+    public ResponseEntity<String> placeOrder(@RequestBody Orders orderRequest) {
+        PaymentResponse paymentResponse = orderService.placeOrder(orderRequest);
+        return ResponseEntity.ok("✅ Order placed and payment " + paymentResponse.getStatus());
     }
 }
