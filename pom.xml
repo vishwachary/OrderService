@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.6</version>
+        <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sample.orders</groupId>
@@ -87,7 +87,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2021.0.8</version> <!-- Use latest 2021.0.x available -->
+                <version>2023.0.3</version> <!-- ✅ use Leyton train -->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
