@@ -5,12 +5,10 @@ import com.sample.orders.orderservice.dto.PaymentResponse;
 import com.sample.orders.orderservice.entity.Orders;
 import com.sample.orders.orderservice.service.OrderService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/api/v1/orders")
+@RestController
+@RequestMapping("/api/v1/shop")
 public class OrderController {
 
     private OrderService orderService;
@@ -18,7 +16,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping
+    @PostMapping("/orders")
     public ResponseEntity<String> placeOrder(@RequestBody Orders orderRequest) {
         PaymentResponse paymentResponse = orderService.placeOrder(orderRequest);
         return ResponseEntity.ok("✅ Order placed and payment " + paymentResponse.getStatus());
